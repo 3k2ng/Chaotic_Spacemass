@@ -3,7 +3,7 @@ extends EndlessScreenObject
 export var velocity: Vector2 = Vector2.ZERO
 export var rotation_velocity: float = 0
 export var bullet_rotation: float = 0
-export var lifetime: float = 3.2
+export var lifetime: float = 1.6
 
 func _ready() -> void:
 	bullet_rotation = Vector2.ZERO.angle_to_point(velocity) - PI/2
