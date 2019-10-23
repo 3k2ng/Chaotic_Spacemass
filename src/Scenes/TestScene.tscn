@@ -6,4 +6,4 @@
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 32, 32 )
-ship_rotation = 2.094
+rotation = 2.0944

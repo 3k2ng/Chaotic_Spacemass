@@ -20,4 +20,3 @@ func _physics_process(delta: float) -> void:
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision != null:
 		queue_free()
-		pass
