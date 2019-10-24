@@ -61,16 +61,18 @@ func _process(delta: float) -> void:
 	elif abs(speed_right - speed_aim_right) > 0:
 		speed_right += (speed_aim_right - speed_right) * delta
 	right_engine_sprite.scale.y = .1 + .7 * (speed_right/speed_limit)
+	
 	#Calculate rotation and velocity
 	var forward_speed: float = 2 * min(speed_left, speed_right)
 	var remaining_speed: float = max(speed_left, speed_right) - min(speed_left, speed_right)
-	velocity = Vector2.UP * forward_speed
+	velocity = Vector2.UP * (forward_speed + remaining_speed * .32)
 	if speed_left >= speed_right:
-		rotating_speed = remaining_speed * .6 / 48
-		velocity += Vector2.RIGHT * remaining_speed * .2
+		rotating_speed = remaining_speed / 40
+		velocity += Vector2.RIGHT * remaining_speed * .32
 	else:
-		rotating_speed = - remaining_speed * .6 / 48
-		velocity += Vector2.LEFT * remaining_speed * .2
+		rotating_speed = - remaining_speed /40
+		velocity += Vector2.LEFT * remaining_speed * .32
+	
 	#Shoot
 	if Input.is_action_pressed("shoot_0") and cd_timer <= 0 and loaded_bullets > 0:
 		var new_bullet = bullet.instance()
