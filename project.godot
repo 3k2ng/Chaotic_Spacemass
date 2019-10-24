@@ -23,6 +23,10 @@ _global_script_class_icons={
 config/name="Chaotic Spacemass"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 left_0={

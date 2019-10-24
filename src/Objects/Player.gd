@@ -2,7 +2,7 @@
 extends EndlessScreenObject
 
 #Max speed (min speed = 0)
-export var speed_limit: float = 512
+export var speed_limit: float = 256
 
 #Cooldown
 export var shoot_cd: float = .2
