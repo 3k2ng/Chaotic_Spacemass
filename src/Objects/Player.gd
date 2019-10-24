@@ -13,26 +13,53 @@ export var bullet: PackedScene
 #Maximum number of loaded bullets
 export var max_bullets: int = 3
 
-#Velocity and rotating speed
-var velocity: Vector2 = Vector2.ZERO
-var rotating_speed: float = 0
+#Max health
+export var max_health: float = 1
+#Regen speed
+export var regen_speed: float
+
+#Velocity, extra_force and rotating speed
+var velocity: Vector2
+var extra_force: Vector2
+var rotating_speed: float
 #Current speed
-var speed_left: float = 0
-var speed_right: float = 0
+var speed_left: float
+var speed_right: float
 #Current speed location (min if brake and max if not brake)
-var speed_aim_left: float = 0
-var speed_aim_right: float = 0
+var speed_aim_left: float
+var speed_aim_right: float
 
 #Timer for countdown shots
 var cd_timer: float = 0
 #Timer for loading bullets
-var reloading_timer: float = max_reloading_cd
+var reloading_timer: float
 #Current number of loaded bullets
-var loaded_bullets: int = max_bullets
+var loaded_bullets: int
+
+#Current health
+var current_health: float
 
 #Sprites
 onready var left_engine_sprite = $BurstSpriteLeft
 onready var right_engine_sprite = $BurstSpriteRight
+
+func _ready() -> void:
+	#Initializing values
+	#Speed values
+	velocity = Vector2.ZERO
+	rotating_speed = 0
+	speed_left = 0
+	speed_right = 0
+	speed_aim_left = 0
+	speed_aim_right = 0
+	extra_force = Vector2.ZERO
+	#Timers and shots
+	cd_timer = 0
+	reloading_timer = max_reloading_cd
+	loaded_bullets = max_bullets
+	#Health
+	current_health = max_health
+	
 
 func _process(delta: float) -> void:
 	
@@ -72,19 +99,20 @@ func _process(delta: float) -> void:
 	else:
 		rotating_speed = - remaining_speed /40
 		velocity += Vector2.LEFT * remaining_speed * .32
+	extra_force -= extra_force * delta * 3.2
 	
 	#Shoot
 	if Input.is_action_pressed("shoot_0") and cd_timer <= 0 and loaded_bullets > 0:
 		var new_bullet = bullet.instance()
 		new_bullet.scale = scale
-		new_bullet.position = position + Vector2.UP.rotated(rotation) * 48
-		new_bullet.velocity = Vector2.UP.rotated(rotation) * speed_limit * 2
-		speed_left -= speed_limit / 2
-		speed_right -= speed_limit / 2
+		new_bullet.position = position + Vector2.UP.rotated(rotation) * scale.length() * 36
+		new_bullet.velocity = (Vector2.UP.rotated(rotation) * speed_limit * 3.2).rotated(rotating_speed * delta)
+		speed_left /= 2
+		speed_right /= 2
+		extra_force -= new_bullet.velocity / 1.6
 		get_parent().add_child(new_bullet)
 		cd_timer = shoot_cd
 		loaded_bullets -= 1
-		print_debug("Remaining bullets: ", loaded_bullets)
 	#Shoot countdown timer
 	if cd_timer > 0:
 		cd_timer -= delta
@@ -94,8 +122,7 @@ func _process(delta: float) -> void:
 	elif loaded_bullets < max_bullets:
 		loaded_bullets += 1
 		reloading_timer = max_reloading_cd
-		print_debug("Remaining bullets: ", loaded_bullets)
 
 func _physics_process(delta: float) -> void:
 	rotation += rotating_speed * delta
-	move_and_slide(velocity.rotated(rotation))
+	move_and_collide(velocity.rotated(rotation) * delta + extra_force * delta)

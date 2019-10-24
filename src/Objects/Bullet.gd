@@ -19,4 +19,5 @@ func _physics_process(delta: float) -> void:
 	rotation = bullet_rotation
 	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 	if collision != null:
+		collision.remainder
 		queue_free()
