@@ -105,7 +105,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("shoot_0") and cd_timer <= 0 and loaded_bullets > 0:
 		var new_bullet = bullet.instance()
 		new_bullet.scale = scale
-		new_bullet.position = position + Vector2.UP.rotated(rotation) * scale.length() * 36
+		new_bullet.position = position + Vector2.UP.rotated(rotation) * scale.length() * 32
 		new_bullet.velocity = (Vector2.UP.rotated(rotation) * speed_limit * 3.2).rotated(rotating_speed * delta)
 		speed_left /= 2
 		speed_right /= 2
