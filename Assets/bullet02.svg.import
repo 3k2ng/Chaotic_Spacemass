@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/explosion02.svg-6865678989df5a161fca72de0eb06c0f.stex"
+path="res://.import/bullet02.svg-c3f581b7bd90ebb8e2d7ebba69313518.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/explosion02.svg"
-dest_files=[ "res://.import/explosion02.svg-6865678989df5a161fca72de0eb06c0f.stex" ]
+source_file="res://Assets/bullet02.svg"
+dest_files=[ "res://.import/bullet02.svg-c3f581b7bd90ebb8e2d7ebba69313518.stex" ]
 
 [params]
 
