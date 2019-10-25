@@ -1,13 +1,16 @@
 #Inherit custom class
 extends EndlessScreenObject
 
+#Number of player
+export var player_number: String = "0"
+
 #Max speed (min speed = 0)
-export var speed_limit: float = 256
+export var speed_limit: float = 320
 
 #Cooldown
 export var shoot_cd: float = .2
 #Loading time
-export var max_reloading_cd: float = 1.6
+export var max_reloading_cd: float = 3.2
 #Bullet import
 export var bullet: PackedScene
 #Maximum number of loaded bullets
@@ -76,25 +79,25 @@ func _process(delta: float) -> void:
 	
 	#Controling engines
 	#Left engine
-	if Input.is_action_pressed("left_0"):
+	if Input.is_action_pressed("left_" + player_number):
 		speed_aim_left = 0
 	else:
 		speed_aim_left = speed_limit
 	#Right engine
-	if Input.is_action_pressed("right_0"):
+	if Input.is_action_pressed("right_" + player_number):
 		speed_aim_right = 0
 	else:
 		speed_aim_right = speed_limit
 		
 	#Altering speed of two engines
 	#Left engine
-	if abs(speed_left - speed_aim_left) > 0 and Input.is_action_pressed("left_0"):
+	if abs(speed_left - speed_aim_left) > 0 and Input.is_action_pressed("left_" + player_number):
 		speed_left += (speed_aim_left - speed_left) * delta * 3.2
 	elif abs(speed_left - speed_aim_left) > 0:
 		speed_left += (speed_aim_left - speed_left) * delta
 	left_engine_sprite.scale.y = speed_left / speed_limit * .5
 	#Right engine
-	if abs(speed_right - speed_aim_right) > 0 and Input.is_action_pressed("right_0"):
+	if abs(speed_right - speed_aim_right) > 0 and Input.is_action_pressed("right_" + player_number):
 		speed_right += (speed_aim_right - speed_right) * delta * 3.2
 	elif abs(speed_right - speed_aim_right) > 0:
 		speed_right += (speed_aim_right - speed_right) * delta
@@ -116,7 +119,7 @@ func _process(delta: float) -> void:
 	extra_rotation -= extra_rotation * delta * 3.2
 	
 	#Shoot
-	if Input.is_action_pressed("shoot_0") and cd_timer <= 0 and loaded_bullets > 0:
+	if Input.is_action_pressed("shoot_" + player_number) and cd_timer <= 0 and loaded_bullets > 0:
 		var new_bullet = bullet.instance()
 		new_bullet.scale = scale
 		new_bullet.position = position + Vector2.UP.rotated(rotation) * scale.length() * 32

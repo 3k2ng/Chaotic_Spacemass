@@ -5,6 +5,13 @@
 [node name="TestScene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 194.389, 99.3936 )
+modulate = Color( 1, 0.705882, 0.607843, 1 )
+position = Vector2( 128, 128 )
 rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
+
+[node name="Player2" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.560784, 1, 1, 1 )
+position = Vector2( -128, -128 )
+scale = Vector2( 0.5, 0.5 )
+player_number = "1"
