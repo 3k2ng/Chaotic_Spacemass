@@ -48,7 +48,7 @@ func _hit(damage: float, hit:= Vector2.ZERO, hit_pos:= position) -> void:
 	current_health -= damage
 	var dis:= position - hit_pos
 	var deg:= - dis.angle_to(hit)
-	extra_rotation += (hit - velocity).length() * (scale.length() / sqrt(2)) * sin(deg) / (3.2 * dis.length())
+	extra_rotation += (hit - velocity).length() * sin(deg) / (3.2 * dis.length())
 	extra_force += hit.length() * cos(deg) * dis.normalized() * .64
 	speed_left = 0
 	speed_right = 0
