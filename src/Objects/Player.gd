@@ -19,8 +19,8 @@ export var max_health: float = 1
 export var regen_speed: float
 
 #Velocity, extra_force and rotating speed
-var velocity: Vector2
 var extra_force: Vector2
+var extra_rotation: float
 var rotating_speed: float
 #Current speed
 var speed_left: float
@@ -43,6 +43,16 @@ var current_health: float
 onready var left_engine_sprite = $BurstSpriteLeft
 onready var right_engine_sprite = $BurstSpriteRight
 
+func _hit(damage: float, hit:= Vector2.ZERO, hit_pos:= position) -> void:
+	#Calculte the hit
+	current_health -= damage
+	var dis:= position - hit_pos
+	var deg:= - dis.angle_to(hit)
+	extra_rotation += (hit - velocity).length() * (scale.length() / sqrt(2)) * sin(deg) / (3.2 * dis.length())
+	extra_force += hit.length() * cos(deg) * dis.normalized() * .64
+	speed_left = 0
+	speed_right = 0
+
 func _ready() -> void:
 	#Initializing values
 	#Speed values
@@ -53,6 +63,7 @@ func _ready() -> void:
 	speed_aim_left = 0
 	speed_aim_right = 0
 	extra_force = Vector2.ZERO
+	extra_rotation = 0
 	#Timers and shots
 	cd_timer = 0
 	reloading_timer = max_reloading_cd
@@ -81,13 +92,13 @@ func _process(delta: float) -> void:
 		speed_left += (speed_aim_left - speed_left) * delta * 3.2
 	elif abs(speed_left - speed_aim_left) > 0:
 		speed_left += (speed_aim_left - speed_left) * delta
-	left_engine_sprite.scale.y = .1 + .7 * (speed_left/speed_limit)
+	left_engine_sprite.scale.y = speed_left / speed_limit * .5
 	#Right engine
 	if abs(speed_right - speed_aim_right) > 0 and Input.is_action_pressed("right_0"):
 		speed_right += (speed_aim_right - speed_right) * delta * 3.2
 	elif abs(speed_right - speed_aim_right) > 0:
 		speed_right += (speed_aim_right - speed_right) * delta
-	right_engine_sprite.scale.y = .1 + .7 * (speed_right/speed_limit)
+	right_engine_sprite.scale.y = speed_right / speed_limit * .5
 	
 	#Calculate rotation and velocity
 	var forward_speed: float = 2 * min(speed_left, speed_right)
@@ -99,16 +110,19 @@ func _process(delta: float) -> void:
 	else:
 		rotating_speed = - remaining_speed /40
 		velocity += Vector2.LEFT * remaining_speed * .32
+	velocity = velocity.rotated(rotation) + extra_force
+	rotating_speed += extra_rotation
 	extra_force -= extra_force * delta * 3.2
+	extra_rotation -= extra_rotation * delta * 3.2
 	
 	#Shoot
 	if Input.is_action_pressed("shoot_0") and cd_timer <= 0 and loaded_bullets > 0:
 		var new_bullet = bullet.instance()
 		new_bullet.scale = scale
 		new_bullet.position = position + Vector2.UP.rotated(rotation) * scale.length() * 32
-		new_bullet.velocity = (Vector2.UP.rotated(rotation) * speed_limit * 3.2).rotated(rotating_speed * delta)
-		speed_left /= 2
-		speed_right /= 2
+		new_bullet.velocity = (Vector2.UP.rotated(rotation) * speed_limit * 6.4).rotated(rotating_speed * delta)
+		speed_left = 0
+		speed_right = 0
 		extra_force -= new_bullet.velocity / 1.6
 		get_parent().add_child(new_bullet)
 		cd_timer = shoot_cd
@@ -125,4 +139,5 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	rotation += rotating_speed * delta
-	move_and_collide(velocity.rotated(rotation) * delta + extra_force * delta)
+	#Move and collide
+	move_and_slide(velocity * scale.length() / sqrt(2))

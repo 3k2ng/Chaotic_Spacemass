@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="32"
-   height="64"
-   viewBox="0 0 8.4666665 16.933334"
+   width="128"
+   height="128"
+   viewBox="0 0 33.866666 33.866668"
    version="1.1"
    id="svg8"
-   sodipodi:docname="bullet01.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="explosion01.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="8.5472839"
-     inkscape:cy="22.232877"
+     inkscape:zoom="0.35"
+     inkscape:cx="-64.285714"
+     inkscape:cy="560"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -53,11 +53,12 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-280.06665)">
-    <path
-       style="fill:#ececec;stroke-width:2.31004286"
-       d="M 16 0 C 13.235497 1.3718955e-07 2.4193608 11.56595 1.0371094 16 C 0.34598362 18.217025 -9.9703907e-08 25.108513 0 32 L 0 48 C 2.0607381e-08 54.065546 0.77470248 60.130171 2.3222656 61.677734 C 5.417392 64.772861 26.582608 64.772861 29.677734 61.677734 C 31.225298 60.130171 32 54.065546 32 48 L 32 32 C 32 25.108513 31.654016 18.217025 30.962891 16 C 29.580639 11.56595 18.764503 -1.3718955e-07 16 0 z "
-       transform="matrix(0.26458334,0,0,0.26458334,0,280.06665)"
-       id="path46" />
+     transform="translate(0,-263.13332)">
+    <circle
+       style="fill:#f2f2f2;fill-opacity:1;stroke:none;stroke-width:0.09038083"
+       id="path815"
+       cx="16.933334"
+       cy="280.06665"
+       r="16.933334" />
   </g>
 </svg>

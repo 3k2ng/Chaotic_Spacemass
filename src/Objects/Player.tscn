@@ -14,17 +14,21 @@ bullet = ExtResource( 2 )
 
 [node name="BurstSpriteLeft" type="Sprite" parent="."]
 modulate = Color( 1, 0.74902, 0.74902, 1 )
-position = Vector2( -40, 20 )
-rotation = 3.14159
-scale = Vector2( 0.2, 0.1 )
+position = Vector2( -36, 16 )
+scale = Vector2( 0.2, 0.25 )
 texture = ExtResource( 3 )
+centered = false
+offset = Vector2( -16, 0 )
+flip_v = true
 
 [node name="BurstSpriteRight" type="Sprite" parent="."]
 modulate = Color( 1, 0.74902, 0.74902, 1 )
-position = Vector2( 40, 20 )
-rotation = 3.14159
-scale = Vector2( 0.2, 0.1 )
+position = Vector2( 36, 16 )
+scale = Vector2( 0.2, 0.25 )
 texture = ExtResource( 3 )
+centered = false
+offset = Vector2( -16, 0 )
+flip_v = true
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 rotation = -7.10543e-015

@@ -1,13 +1,9 @@
 extends EndlessScreenObject
 
-export var velocity: Vector2 = Vector2.ZERO
-export var rotation_velocity: float = 0
-export var bullet_rotation: float = 0
 export var lifetime: float = 1.6
 
 func _ready() -> void:
-	bullet_rotation = Vector2.ZERO.angle_to_point(velocity) - PI/2
-	rotation = bullet_rotation
+	rotation = Vector2.ZERO.angle_to_point(velocity) - PI/2
 
 func _process(delta: float) -> void:
 	if lifetime > 0:
@@ -16,8 +12,10 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _physics_process(delta: float) -> void:
-	rotation = bullet_rotation
-	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
-	if collision != null:
-		collision.remainder
+	rotation = Vector2.ZERO.angle_to_point(velocity) - PI/2
+	#Move and collide
+	var collision: KinematicCollision2D = move_and_collide(velocity * scale.length() * delta / sqrt(2))
+	if collision:
+		if collision.collider.has_method("_hit"):
+			collision.collider._hit(.75, velocity, collision.position)
 		queue_free()
