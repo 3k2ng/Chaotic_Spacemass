@@ -1,6 +1,9 @@
 #Inherit custom class
 extends EndlessScreenObject
 
+#Signals
+signal check
+
 #Number of player
 export var player_number: String = "0"
 
@@ -13,13 +16,15 @@ export var shoot_cd: float = .2
 export var max_reloading_cd: float = 3.2
 #Bullet import
 export var bullet: PackedScene
+
+export var explosion: PackedScene
 #Maximum number of loaded bullets
 export var max_bullets: int = 3
 
 #Max health
 export var max_health: float = 1
 #Regen speed
-export var regen_speed: float
+export var regen_speed: float = .1
 
 #Velocity, extra_force and rotating speed
 var extra_force: Vector2
@@ -139,8 +144,25 @@ func _process(delta: float) -> void:
 	elif loaded_bullets < max_bullets:
 		loaded_bullets += 1
 		reloading_timer = max_reloading_cd
+	
+	if loaded_bullets >= max_bullets and current_health < max_health:
+		current_health += regen_speed * delta
+		if current_health > max_health:
+			current_health = max_health
+	
+	if current_health <= 0:
+		_die()
+	
+	emit_signal("check", current_health, loaded_bullets, reloading_timer/ max_reloading_cd)
 
 func _physics_process(delta: float) -> void:
 	rotation += rotating_speed * delta
 	#Move and collide
 	move_and_slide(velocity * scale.length() / sqrt(2))
+
+func _die():
+	var expl = explosion.instance()
+	expl.position = position
+	expl.scale = scale
+	get_parent().add_child(expl)
+	queue_free()

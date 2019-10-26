@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/UI/PlayerHUD.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/bar01.svg" type="Texture" id=3]
+
+[node name="PlayerHUD" type="MarginContainer"]
+modulate = Color( 1, 1, 1, 0.560784 )
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+bullet = ExtResource( 2 )
+
+[node name="VBox1" type="VBoxContainer" parent="."]
+margin_right = 256.0
+margin_bottom = 68.0
+
+[node name="Health" type="TextureProgress" parent="VBox1"]
+margin_right = 256.0
+margin_bottom = 64.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+texture_progress = ExtResource( 3 )
+
+[node name="HBox1" type="HBoxContainer" parent="VBox1"]
+margin_top = 68.0
+margin_right = 256.0
+margin_bottom = 68.0
