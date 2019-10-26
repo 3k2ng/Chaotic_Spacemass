@@ -128,7 +128,7 @@ func _process(delta: float) -> void:
 		var new_bullet = bullet.instance()
 		new_bullet.scale = scale
 		new_bullet.position = position + Vector2.UP.rotated(rotation) * scale.length() * 32
-		new_bullet.velocity = (Vector2.UP.rotated(rotation) * speed_limit * 6.4).rotated(rotating_speed * delta)
+		new_bullet.velocity = (Vector2.UP.rotated(rotation) * speed_limit * 3.2).rotated(rotating_speed * delta)
 		speed_left = 0
 		speed_right = 0
 		extra_force -= new_bullet.velocity / 1.6
