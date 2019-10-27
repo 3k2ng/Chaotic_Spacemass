@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Chaotic Spacemass"
+run/main_scene="res://Demo.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -62,4 +63,5 @@ shoot_1={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

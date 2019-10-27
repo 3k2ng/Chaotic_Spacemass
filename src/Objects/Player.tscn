@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Objects/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/Objects/Bullet.tscn" type="PackedScene" id=2]
@@ -8,6 +8,45 @@
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, -28, 27, -14, 48, 12, 24, 26, -24, 26, -48, 12, -27, -14 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Flick"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.247059 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.247059 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BurstSpriteLeft:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.74902, 0.74902, 1 ), Color( 1, 0.74902, 0.74902, 0.247059 ), Color( 1, 0.74902, 0.74902, 1 ), Color( 1, 0.74902, 0.74902, 0.247059 ), Color( 1, 0.74902, 0.74902, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BurstSpriteRight:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.74902, 0.74902, 1 ), Color( 1, 0.74902, 0.74902, 0.247059 ), Color( 1, 0.74902, 0.74902, 1 ), Color( 1, 0.74902, 0.74902, 0.247059 ), Color( 1, 0.74902, 0.74902, 1 ) ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -39,3 +78,6 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="PlayerAnimPl" type="AnimationPlayer" parent="."]
+anims/Flick = SubResource( 2 )

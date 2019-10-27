@@ -4,6 +4,9 @@ extends EndlessScreenObject
 #Signals
 signal check
 
+#Invincible timer
+var invin_timer: float
+
 #Number of player
 export var player_number: String = "0"
 
@@ -60,6 +63,7 @@ func _hit(damage: float, hit:= Vector2.ZERO, hit_pos:= position) -> void:
 	extra_force += hit.length() * cos(deg) * dis.normalized() * .64
 	speed_left = 0
 	speed_right = 0
+	invin_timer += 1.6
 
 func _ready() -> void:
 	#Initializing values
@@ -76,6 +80,7 @@ func _ready() -> void:
 	cd_timer = 0
 	reloading_timer = max_reloading_cd
 	loaded_bullets = max_bullets
+	invin_timer = 3.2
 	#Health
 	current_health = max_health
 	
@@ -152,6 +157,14 @@ func _process(delta: float) -> void:
 	
 	if current_health <= 0:
 		_die()
+	
+	if invin_timer > 0:
+		$CollisionShape2D.disabled = true
+		$PlayerAnimPl.play("Flick")
+		invin_timer -= delta
+	else:
+		$CollisionShape2D.disabled = false
+		invin_timer = 0
 	
 	emit_signal("check", current_health, loaded_bullets, reloading_timer/ max_reloading_cd)
 
