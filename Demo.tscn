@@ -15,9 +15,9 @@ rect_scale = Vector2( 0.5, 0.5 )
 [node name="PlayerHUD2" parent="." instance=ExtResource( 2 )]
 modulate = Color( 0.560784, 1, 1, 0.560784 )
 margin_left = 896.0
-margin_top = 535.0
+margin_top = 512.0
 margin_right = 1152.0
-margin_bottom = 603.0
+margin_bottom = 580.0
 rect_scale = Vector2( 0.5, 0.5 )
 [connection signal="check" from="TestScene/Player" to="PlayerHUD" method="_on_Player_check"]
 [connection signal="check" from="TestScene/Player2" to="PlayerHUD2" method="_on_Player_check"]

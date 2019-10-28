@@ -55,6 +55,8 @@ onready var left_engine_sprite = $BurstSpriteLeft
 onready var right_engine_sprite = $BurstSpriteRight
 
 func _hit(damage: float, hit:= Vector2.ZERO, hit_pos:= position) -> void:
+	if invin_timer > 0:
+		return
 	#Calculte the hit
 	current_health -= damage
 	var dis:= position - hit_pos
@@ -159,11 +161,9 @@ func _process(delta: float) -> void:
 		_die()
 	
 	if invin_timer > 0:
-		$CollisionShape2D.disabled = true
 		$PlayerAnimPl.play("Flick")
 		invin_timer -= delta
 	else:
-		$CollisionShape2D.disabled = false
 		invin_timer = 0
 	
 	emit_signal("check", current_health, loaded_bullets, reloading_timer/ max_reloading_cd)
