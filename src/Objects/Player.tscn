@@ -52,6 +52,7 @@ tracks/2/keys = {
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
 explosion = ExtResource( 3 )
+player_number = "0"
 
 [node name="BurstSpriteLeft" type="Sprite" parent="."]
 modulate = Color( 1, 0.74902, 0.74902, 1 )

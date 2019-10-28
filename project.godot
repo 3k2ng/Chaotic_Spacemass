@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "EndlessScreenObject",
 "language": "GDScript",
 "path": "res://src/Objects/EndlessScreenObject.gd"
+}, {
+"base": "EndlessScreenObject",
+"class": "Spaceship",
+"language": "GDScript",
+"path": "res://src/Objects/Spaceship.gd"
 } ]
 _global_script_class_icons={
-"EndlessScreenObject": ""
+"EndlessScreenObject": "",
+"Spaceship": ""
 }
 
 [application]
