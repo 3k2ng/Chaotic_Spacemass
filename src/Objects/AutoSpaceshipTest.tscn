@@ -5,7 +5,7 @@
 [ext_resource path="res://src/Objects/Explosion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/bullet02.svg" type="Texture" id=4]
 [ext_resource path="res://Assets/spaceship02.svg" type="Texture" id=5]
-[ext_resource path="res://src/Sounds/chiu.ogg" type="AudioStream" id=6]
+[ext_resource path="res://src/Sounds/laser_shot.ogg" type="AudioStream" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, -28, 27, -14, 48, 12, 24, 26, -24, 26, -48, 12, -27, -14 )
