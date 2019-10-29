@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chiu.ogg-c3913f47eca60cc025e7156d23d5060c.oggstr"
+
+[deps]
+
+source_file="res://src/Sounds/chiu.ogg"
+dest_files=[ "res://.import/chiu.ogg-c3913f47eca60cc025e7156d23d5060c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

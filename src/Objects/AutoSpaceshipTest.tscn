@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Objects/AutoSpaceshipTest.gd" type="Script" id=1]
 [ext_resource path="res://src/Objects/Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Objects/Explosion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/bullet02.svg" type="Texture" id=4]
 [ext_resource path="res://Assets/spaceship02.svg" type="Texture" id=5]
+[ext_resource path="res://src/Sounds/chiu.ogg" type="AudioStream" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, -28, 27, -14, 48, 12, 24, 26, -24, 26, -48, 12, -27, -14 )
@@ -49,7 +50,7 @@ tracks/2/keys = {
 }
 
 [node name="AutoSpaceship" type="KinematicBody2D"]
-position = Vector2( 484.036, 306.75 )
+position = Vector2( 512, 287 )
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
 explosion = ExtResource( 3 )
@@ -82,3 +83,6 @@ shape = SubResource( 1 )
 
 [node name="PlayerAnimPl" type="AnimationPlayer" parent="."]
 anims/Flick = SubResource( 2 )
+
+[node name="chiu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

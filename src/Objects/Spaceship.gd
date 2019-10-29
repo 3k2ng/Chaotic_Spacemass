@@ -31,7 +31,7 @@ export var max_bullets: int = 3
 #Max health
 export var max_health: float = 1
 #Regen speed
-export var regen_speed: float = .1
+export var regen_speed: float = .05
 
 #Velocity, extra_force and rotating speed
 var extra_force: Vector2
@@ -146,6 +146,7 @@ func _process(delta: float) -> void:
 		get_parent().add_child(new_bullet)
 		cd_timer = shoot_cd
 		loaded_bullets -= 1
+		$chiu.play(0)
 	#Shoot countdown timer
 	if cd_timer > 0:
 		cd_timer -= delta
