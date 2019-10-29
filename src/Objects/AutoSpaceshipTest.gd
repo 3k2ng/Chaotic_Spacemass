@@ -11,15 +11,15 @@ var general_speed: float = 1
 func _process(delta: float) -> void:
 	location = get_viewport().get_mouse_position()
 	
-	var dis := location - position - velocity.normalized() / (scale.length() / sqrt(2)) * 32
+	var dis := location - position - velocity.normalized() * (scale.length() / sqrt(2)) * 32
 	if dis.x > get_viewport_rect().size.x / 2:
-		location.x -= get_viewport_rect().size.x + border_gap / (scale.length() / sqrt(2))
+		location.x -= get_viewport_rect().size.x + border_gap * (scale.length() / sqrt(2))
 	if dis.y > get_viewport_rect().size.y / 2:
-		location.y -= get_viewport_rect().size.y + border_gap / (scale.length() / sqrt(2))
+		location.y -= get_viewport_rect().size.y + border_gap * (scale.length() / sqrt(2))
 	if dis.x < -get_viewport_rect().size.x / 2:
-		location.x += get_viewport_rect().size.x + border_gap / (scale.length() / sqrt(2))
+		location.x += get_viewport_rect().size.x + border_gap * (scale.length() / sqrt(2))
 	if dis.y < -get_viewport_rect().size.y / 2:
-		location.y += get_viewport_rect().size.y + border_gap / (scale.length() / sqrt(2))
+		location.y += get_viewport_rect().size.y + border_gap * (scale.length() / sqrt(2))
 	
 	dis = location - position - velocity.normalized() / (scale.length() / sqrt(2)) * 32
 	
