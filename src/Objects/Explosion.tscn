@@ -27,5 +27,5 @@ script = ExtResource( 2 )
 [node name="Explode" type="AnimationPlayer" parent="."]
 anims/Fade = SubResource( 1 )
 
-[node name="bum" type="AudioStreamPlayer" parent="."]
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

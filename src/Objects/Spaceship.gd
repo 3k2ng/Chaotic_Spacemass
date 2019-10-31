@@ -146,7 +146,7 @@ func _process(delta: float) -> void:
 		get_parent().add_child(new_bullet)
 		cd_timer = shoot_cd
 		loaded_bullets -= 1
-		$chiu.play(0)
+		$Laser.play(0)
 	#Shoot countdown timer
 	if cd_timer > 0:
 		cd_timer -= delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Objects/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/Objects/Bullet.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/bullet02.svg" type="Texture" id=4]
 [ext_resource path="res://Assets/spaceship02.svg" type="Texture" id=5]
 [ext_resource path="res://src/Sounds/laser_shot.ogg" type="AudioStream" id=6]
+[ext_resource path="res://src/Sounds/jump.ogg" type="AudioStream" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, -28, 27, -14, 48, 12, 24, 26, -24, 26, -48, 12, -27, -14 )
@@ -52,7 +53,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=3]
 resource_name = "Shoot"
 tracks/0/type = "value"
-tracks/0/path = NodePath("chiu:playing")
+tracks/0/path = NodePath("Laser:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -69,6 +70,7 @@ script = ExtResource( 1 )
 border_gap = 16.0
 bullet = ExtResource( 2 )
 explosion = ExtResource( 3 )
+regen_speed = 0.01
 player_number = "0"
 
 [node name="BurstSpriteLeft" type="Sprite" parent="."]
@@ -101,5 +103,8 @@ shape = SubResource( 1 )
 anims/Flick = SubResource( 2 )
 anims/Shoot = SubResource( 3 )
 
-[node name="chiu" type="AudioStreamPlayer2D" parent="."]
+[node name="Laser" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
