@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/drawing.svg-7902858fc0fbf43b1434024cc33e1730.stex"
+path="res://.import/play_button01.svg-4860fbcc03bc8ff14c1c1b1a400b6bee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/drawing.svg"
-dest_files=[ "res://.import/drawing.svg-7902858fc0fbf43b1434024cc33e1730.stex" ]
+source_file="res://Assets/play_button01.svg"
+dest_files=[ "res://.import/play_button01.svg-4860fbcc03bc8ff14c1c1b1a400b6bee.stex" ]
 
 [params]
 

@@ -13,3 +13,9 @@ func _input_event(viewport, event, shape_idx):
 		get_parent().get_parent().add_child(scene)
 		get_parent().queue_free()
 		pass
+
+func _mouse_entered():
+	$AnimationPlayer.play("zoom_in")
+
+func _mouse_exited():
+	$AnimationPlayer.play("zoom_out")
