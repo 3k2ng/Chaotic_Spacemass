@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Objects/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/UI/PlayerHUD.tscn" type="PackedScene" id=2]
+
+[node name="TwoPlayer" type="Node2D"]
+
+[node name="Player_1" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 0.705882, 0.607843, 1 )
+position = Vector2( 64, 64 )
+rotation = 3.14159
+
+[node name="Player_2" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.560784, 1, 1, 1 )
+position = Vector2( 960, 512 )
+player_number = "1"
+
+[node name="PlayerHUD_1" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 0.705882, 0.607843, 0.560784 )
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="PlayerHUD_2" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.560784, 1, 1, 0.560784 )
+margin_left = 896.0
+margin_top = 508.0
+margin_right = 1152.0
+margin_bottom = 576.0
+rect_scale = Vector2( 0.5, 0.5 )
+[connection signal="check" from="Player_1" to="PlayerHUD_1" method="_on_Player_check"]
+[connection signal="check" from="Player_2" to="PlayerHUD_2" method="_on_Player_check"]

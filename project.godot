@@ -27,7 +27,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Chaotic Spacemass"
-run/main_scene="res://Demo1.tscn"
 config/icon="res://icon.svg"
 
 [display]

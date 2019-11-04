@@ -308,8 +308,8 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 } ]
 15/z_index = 0
 
-[node name="TileMap" type="TileMap"]
-scale = Vector2( 0.063, 0.063 )
+[node name="HardTile" type="TileMap"]
+scale = Vector2( 0.125, 0.125 )
 tile_set = SubResource( 17 )
 cell_size = Vector2( 128, 128 )
 format = 1

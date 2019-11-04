@@ -1,5 +1,7 @@
 extends MarginContainer
 
+var connected_player : String
+
 export var bullet : PackedScene
 
 func _on_Player_check(health, bullets, shot_cd):
