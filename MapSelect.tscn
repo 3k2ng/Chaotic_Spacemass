@@ -1,3 +1,22 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Maps/Map_1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Maps/Map_2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Maps/Map_3.tscn" type="PackedScene" id=3]
 
 [node name="MapSelection" type="Node"]
+
+[node name="Map_1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 32 )
+scale = Vector2( 0.2, 0.2 )
+packed = true
+
+[node name="Map_2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 268, 32 )
+scale = Vector2( 0.2, 0.2 )
+packed = true
+
+[node name="Map_3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 504, 32 )
+scale = Vector2( 0.2, 0.2 )
+packed = true
