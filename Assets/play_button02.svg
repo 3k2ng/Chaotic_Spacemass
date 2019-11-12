@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="play_button01.svg">
+   sodipodi:docname="play_button02.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-230.04541"
-     inkscape:cy="323.59282"
+     inkscape:zoom="0.7"
+     inkscape:cx="-415.75041"
+     inkscape:cy="118.40693"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -72,26 +72,5 @@
        inkscape:transform-center-x="-5.4147289"
        transform="matrix(0.68062026,0,0,0.67070209,-0.54147194,98.215917)"
        inkscape:transform-center-y="3.1952645e-06" />
-    <rect
-       style="fill:#80e5ff;fill-opacity:0.56470591;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
-       id="rect816"
-       width="33.866665"
-       height="4.2333322"
-       x="16.933334"
-       y="239.84999" />
-    <rect
-       style="fill:#aaffaa;fill-opacity:0.56470591;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
-       id="rect816-8"
-       width="33.866665"
-       height="10.583332"
-       x="5.0486057e-07"
-       y="248.31665" />
-    <rect
-       style="fill:#ffaaaa;fill-opacity:0.56470588;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
-       id="rect816-8-1"
-       width="16.933332"
-       height="16.933332"
-       x="33.866669"
-       y="269.48331" />
   </g>
 </svg>

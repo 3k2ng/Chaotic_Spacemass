@@ -1,73 +1,41 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/Fonts/Ubuntu-B.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://src/Script/Start.gd" type="Script" id=2]
-[ext_resource path="res://Assets/play_button01.svg" type="Texture" id=3]
+[ext_resource path="res://src/Fonts/andromeda.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/play_button01.svg" type="Texture" id=2]
+[ext_resource path="res://Assets/play_button02.svg" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
 font_data = ExtResource( 1 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 128, 128 )
+[sub_resource type="GDScript" id=2]
+script/source = "extends TextureButton
 
-[sub_resource type="Animation" id=3]
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
-}
+func _pressed():
+	get_tree().change_scene(\"res://MapSelect.tscn\")"
 
 [node name="Start" type="Node"]
 
 [node name="Label" type="Label" parent="."]
-margin_left = 288.0
+margin_left = 286.242
 margin_top = 16.0
-margin_right = 720.0
+margin_right = 763.242
 margin_bottom = 183.0
 grow_vertical = 2
-rect_scale = Vector2( 1, 0.72 )
+rect_scale = Vector2( 1, 0.8 )
 custom_fonts/font = SubResource( 1 )
 text = "CHAOTIC
 SPACEMASS"
 align = 1
 valign = 1
 
-[node name="Start" type="Area2D" parent="."]
-position = Vector2( 512, 288 )
-script = ExtResource( 2 )
-
-[node name="Icon" type="Sprite" parent="Start"]
-texture = ExtResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape2D" parent="Start"]
-shape = SubResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Start"]
-anims/zoom_in = SubResource( 3 )
-anims/zoom_out = SubResource( 4 )
-[connection signal="mouse_entered" from="Start" to="Start" method="_mouse_entered"]
-[connection signal="mouse_exited" from="Start" to="Start" method="_mouse_exited"]
+[node name="Start" type="TextureButton" parent="."]
+anchor_right = 1.0
+margin_left = 384.0
+margin_top = 160.0
+margin_right = -384.0
+margin_bottom = 416.0
+rect_pivot_offset = Vector2( 128, 128 )
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+script = SubResource( 2 )

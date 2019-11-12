@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Maps/Map_2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Maps/Map_3.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Maps/Map_4.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Fonts/Ubuntu-L.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/Fonts/monaco.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -13,22 +13,22 @@ font_data = ExtResource( 5 )
 [node name="MapSelection" type="Node"]
 
 [node name="Map_1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 32, 128 )
+position = Vector2( 150, 130 )
 scale = Vector2( 0.2, 0.2 )
 packed = true
 
 [node name="Map_2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 300, 128 )
+position = Vector2( 418, 130 )
 scale = Vector2( 0.2, 0.2 )
 packed = true
 
 [node name="Map_3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 568, 128 )
+position = Vector2( 686, 130 )
 scale = Vector2( 0.2, 0.2 )
 packed = true
 
 [node name="Map_4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 128, 307 )
+position = Vector2( 150, 320 )
 scale = Vector2( 0.2, 0.2 )
 packed = true
 

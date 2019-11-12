@@ -1,7 +1,5 @@
 extends Area2D
 
-
-
 func _process(delta):
 	if Input.is_action_pressed("left-mouse"):
 		get_tree().paused = false

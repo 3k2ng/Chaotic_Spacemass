@@ -25,9 +25,6 @@ export var shoot_cd: float = .2
 export var max_reloading_cd: float = 3.2
 #Bullet import
 export var bullet: PackedScene
-
-export var final_scene: PackedScene
-
 export var explosion: PackedScene
 #Maximum number of loaded bullets
 export var max_bullets: int = 3
@@ -183,7 +180,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide(velocity * scale.length() / sqrt(2))
 
 func _die():
-	get_parent().get_parent().add_child(final_scene.instance())
 	var expl = explosion.instance()
 	expl.position = position
 	expl.scale = scale
