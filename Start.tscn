@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Fonts/andromeda.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/play_button01.svg" type="Texture" id=2]
 [ext_resource path="res://Assets/play_button02.svg" type="Texture" id=3]
+[ext_resource path="res://Assets/spaceship02.svg" type="Texture" id=4]
+[ext_resource path="res://src/Fonts/monaco.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -15,13 +17,139 @@ func _pressed():
 	get_tree().change_scene(\"res://MapSelect.tscn\")
 "
 
+[sub_resource type="GDScript" id=5]
+script/source = "extends TextureRect
+
+export var player_number: String"
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+var setting := false
+
+var action_string : String
+
+func _ready():
+	action_string = \"left_\" + get_parent().player_number
+	_set_key()
+
+func _set_key():
+	rect_size = Vector2(64,64)
+	text = OS.get_scancode_string(InputMap.get_action_list(action_string)[0].scancode)
+
+func _pressed():
+	pause_mode = Node.PAUSE_MODE_PROCESS
+	get_tree().paused = true
+	setting = true
+	text = \"~\"
+
+func _input(event):
+	if event is InputEventKey:
+		if setting:
+			_change_key(event)
+			setting = false
+			get_tree().paused = false
+			pause_mode = Node.PAUSE_MODE_INHERIT
+
+func _change_key(new_key):
+	#Delete key of pressed button
+	if !InputMap.get_action_list(action_string).empty():
+		InputMap.action_erase_event(action_string, InputMap.get_action_list(action_string)[0])
+			
+	#Add new Key
+	InputMap.action_add_event(action_string, new_key)
+	
+	_set_key()"
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Button
+
+var setting := false
+
+var action_string : String
+
+func _ready():
+	action_string = \"right_\" + get_parent().player_number
+	_set_key()
+
+func _set_key():
+	rect_size = Vector2(64,64)
+	text = OS.get_scancode_string(InputMap.get_action_list(action_string)[0].scancode)
+
+func _pressed():
+	pause_mode = Node.PAUSE_MODE_PROCESS
+	get_tree().paused = true
+	setting = true
+	text = \"~\"
+
+func _input(event):
+	if event is InputEventKey:
+		if setting:
+			_change_key(event)
+			setting = false
+			get_tree().paused = false
+			pause_mode = Node.PAUSE_MODE_INHERIT
+
+func _change_key(new_key):
+	#Delete key of pressed button
+	if !InputMap.get_action_list(action_string).empty():
+		InputMap.action_erase_event(action_string, InputMap.get_action_list(action_string)[0])
+			
+	#Add new Key
+	InputMap.action_add_event(action_string, new_key)
+	
+	_set_key()"
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Button
+
+var setting := false
+
+var action_string : String
+
+func _ready():
+	action_string = \"shoot_\" + get_parent().player_number
+	_set_key()
+
+func _set_key():
+	rect_size = Vector2(64,64)
+	text = OS.get_scancode_string(InputMap.get_action_list(action_string)[0].scancode)
+
+func _pressed():
+	pause_mode = Node.PAUSE_MODE_PROCESS
+	get_tree().paused = true
+	setting = true
+	text = \"~\"
+
+func _input(event):
+	if event is InputEventKey:
+		if setting:
+			_change_key(event)
+			setting = false
+			get_tree().paused = false
+			pause_mode = Node.PAUSE_MODE_INHERIT
+
+func _change_key(new_key):
+	#Delete key of pressed button
+	if !InputMap.get_action_list(action_string).empty():
+		InputMap.action_erase_event(action_string, InputMap.get_action_list(action_string)[0])
+			
+	#Add new Key
+	InputMap.action_add_event(action_string, new_key)
+	
+	_set_key()"
+
 [node name="Start" type="Node"]
 
 [node name="Label" type="Label" parent="."]
 margin_left = 286.242
-margin_top = 16.0
+margin_top = 32.0
 margin_right = 763.242
-margin_bottom = 183.0
+margin_bottom = 199.0
 grow_vertical = 2
 rect_scale = Vector2( 1, 0.8 )
 custom_fonts/font = SubResource( 1 )
@@ -36,7 +164,84 @@ margin_left = 384.0
 margin_top = 160.0
 margin_right = -384.0
 margin_bottom = 416.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 128, 128 )
 texture_normal = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
 script = SubResource( 2 )
+
+[node name="SpaceshipDiagram" type="TextureRect" parent="."]
+pause_mode = 1
+modulate = Color( 1, 0.705882, 0.607843, 1 )
+margin_left = 128.0
+margin_top = 216.0
+margin_right = 512.0
+margin_bottom = 440.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+script = SubResource( 5 )
+player_number = "0"
+
+[node name="Left" type="Button" parent="SpaceshipDiagram"]
+margin_top = 240.0
+margin_right = 64.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 3 )
+text = "_"
+script = SubResource( 4 )
+
+[node name="Right" type="Button" parent="SpaceshipDiagram"]
+margin_left = 320.0
+margin_top = 240.0
+margin_right = 384.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 3 )
+text = "_"
+script = SubResource( 6 )
+
+[node name="Shoot" type="Button" parent="SpaceshipDiagram"]
+margin_left = 160.0
+margin_top = -96.0
+margin_right = 224.0
+margin_bottom = -32.0
+custom_fonts/font = SubResource( 3 )
+text = "_"
+script = SubResource( 7 )
+
+[node name="SpaceshipDiagram2" type="TextureRect" parent="."]
+pause_mode = 1
+modulate = Color( 0.560784, 1, 1, 1 )
+margin_left = 742.4
+margin_top = 216.0
+margin_right = 1126.4
+margin_bottom = 440.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+script = SubResource( 5 )
+player_number = "1"
+
+[node name="Left" type="Button" parent="SpaceshipDiagram2"]
+margin_top = 240.0
+margin_right = 64.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 3 )
+text = "_"
+script = SubResource( 4 )
+
+[node name="Right" type="Button" parent="SpaceshipDiagram2"]
+margin_left = 320.0
+margin_top = 240.0
+margin_right = 384.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 3 )
+text = "_"
+script = SubResource( 6 )
+
+[node name="Shoot" type="Button" parent="SpaceshipDiagram2"]
+margin_left = 160.0
+margin_top = -96.0
+margin_right = 224.0
+margin_bottom = -32.0
+custom_fonts/font = SubResource( 3 )
+text = "_"
+script = SubResource( 7 )
