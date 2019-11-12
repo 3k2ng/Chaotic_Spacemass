@@ -245,3 +245,8 @@ margin_bottom = -32.0
 custom_fonts/font = SubResource( 3 )
 text = "_"
 script = SubResource( 7 )
+
+[node name="Label2" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "A project by SADragonMaker and mquan1409 made with Godot Engine"
