@@ -1,9 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/PlayerHUD.tscn" type="PackedScene" id=2]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var final_scene := preload(\"res://src/Scenes/FinalScene.tscn\")
+var end: bool = false
+
+func _process(delta: float) -> void:
+	if not end:
+		if get_child_count() <= 3:
+			var final := final_scene.instance()
+			if get_child(0).get(\"player_number\") != null:
+				final.get_node(\"win_player\" + get_child(0).player_number).show()
+				end = true
+			else:
+				final.get_node(\"draw\").show()
+				end = true
+			get_parent().add_child(final)
+"
+
 [node name="TwoPlayer" type="Node2D"]
+script = SubResource( 1 )
 
 [node name="Player_1" parent="." instance=ExtResource( 1 )]
 modulate = Color( 1, 0.705882, 0.607843, 1 )

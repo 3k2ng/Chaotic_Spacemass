@@ -1,10 +1,6 @@
 extends Spaceship
 
-signal final 
-
 export var player_number: String
-
-var final_scene := preload("res://src/Scenes/FinalScene.tscn")
 
 var combo_timer_left: float
 var combo_timer_right: float
@@ -43,10 +39,3 @@ func _process(delta: float) -> void:
 		combo_timer_right = 0
 	else:
 		combo_timer_right -= delta
-	
-func _die():
-	._die()
-	var final := final_scene.instance()
-	final.get_node("win_player" + player_number).show()
-	get_parent().add_child(final)
-	
